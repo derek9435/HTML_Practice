@@ -1,0 +1,117 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+  <head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="generator" content="PSPad editor, www.pspad.com">
+  <title>Calculator</title>
+  </head>
+  <body>
+   <form action="/action_page.php">
+  <label for="num2">First number:</label><br>
+  <input type="text" id="num1" name="num1"><br>
+  <label for="num2">Second number:</label><br>
+  <input type="text" id="num2" name="num2"><br><br>
+  <hr>
+  <input type="button" onclick='add();' value="+">
+  <input type="button" onclick='subtract();' value="-">
+  <input type="button" onclick='multiply();' value="*">
+  <input type="button" onclick='divide();' value="/">
+  <hr>
+  <!--
+   <input type="button" onclick="calc('+');" value="+">
+  <input type="button" onclick="calc('-');" value="-">
+  <input type="button" onclick="calc('*');" value="*">
+  <input type="button" onclick="calc('/');" value="/">
+  <hr>
+  -->
+   <p id="result"></p>
+   <p id="message"></p>
+</form>
+<script>
+function add(){
+  num1=document.getElementById('num1').value;
+  num2=document.getElementById('num2').value;
+  try {
+    if (num1==null || num1==undefined || num1.trim()==''){
+        throw "The first number is not given"
+    }
+    if (isNaN(num1)){
+        throw "The first input is not a number"
+    }
+    if (num2==null || num2==undefined || num2.trim()==''){
+        throw "The second number is not given"
+    }
+    if (isNaN(num2)){
+        throw "The second input is not a number"
+    }
+    result=Number(num1) + Number(num2);
+    document.getElementById('result').innerHTML=result;
+  }
+  catch(err){
+    document.getElementById('message').innerHTML = err;
+  }
+}
+function subtract(){
+  num1=document.getElementById('num1').value;
+  num2=document.getElementById('num2').value;
+  result=Number(num1) - Number(num2);
+  document.getElementById('result').innerHTML=result;
+}
+function multiply(){
+  num1=document.getElementById('num1').value;
+  num2=document.getElementById('num2').value;
+  result=Number(num1) * Number(num2);
+  document.getElementById('result').innerHTML=result;
+}
+function divide(){
+  num1=document.getElementById('num1').value;
+  num2=document.getElementById('num2').value;
+  result=Number(num1) / Number(num2);
+  document.getElementById('result').innerHTML=result;
+}
+
+
+function calc(op){
+  // clear the display portion for the last time
+  document.getElementById('message').innerHTML = '' ;
+  document.getElementById('result').innerHTML= '';
+  
+  num1=document.getElementById('num1').value;
+  num2=document.getElementById('num2').value;
+  try {
+    if (num1==null || num1==undefined || num1.trim()==''){
+        throw "The first number is not given"
+    }
+    if (isNaN(num1)){
+        throw "The first input is not a number"
+    }
+    if (num2==null || num2==undefined || num2.trim()==''){
+        throw "The second number is not given"
+    }
+    if (isNaN(num2)){
+        throw "The second input is not a number"
+    }
+    
+    
+    if (op === '+')  {
+      result=Number(num1) + Number(num2);
+      document.getElementById('result').innerHTML=result;
+    }   else if  (op === '-')  {
+      result=Number(num1) - Number(num2);
+      document.getElementById('result').innerHTML=result;
+    } else if (op === '*')  {
+      result=Number(num1) * Number(num2);
+      document.getElementById('result').innerHTML=result;
+    } else if (op === '/')  {
+      result=Number(num1) / Number(num2);
+      document.getElementById('result').innerHTML=result;
+    }
+  }
+  catch(err){
+    document.getElementById('message').innerHTML = err;
+  }
+  
+}
+</script>
+  </body>
+</html>
